@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Original image: <%= @image.title %></h1>
+<div class="row">
+    <div class="col-md-offset-2 col-md-8 thumbnail">
+        <%= image_tag(@image.src) %>
+    </div>
+</div>
+
+<h2>Applied Effects</h2>
+<% @image.fximages.each do |fx| %>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 thumbnail">
+            <%= image_tag("data:image/png;base64," + Base64.encode64(fx[:image].to_blob)) %>
+            <div class="caption">
+                <h5><%= fx[:name] %></h5>
+            </div>
+        </div>
+    </div>
+<% end %>
