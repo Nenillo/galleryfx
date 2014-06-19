@@ -1,26 +1,30 @@
 <h1>GalleryFX image list</h1>
-<h3>Click an image to see some FX!</h3>
 
-<% @images.each_slice(4) do |row| %>
-    <div class="row">
-    <% row.each do |image| %>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <%= link_to(image) do %>
-                    <%= image_tag(image.src, alt: image.title, title: image.title) %>
-                <% end %>
-                <div class="caption">
-                    <h3><%= image.title %></h3>
-                    <p>
-                        <%= link_to 'View', image, class: "btn btn-primary" %>
-                        <%= link_to 'Edit', edit_image_path(image), class: "btn btn-primary" %>
-                        <%= link_to 'Destroy', image, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
-                    </p>
+<% unless @images.empty? %>
+<h3>Click an image to see some FX!</h3>
+    <% @images.each_slice(4) do |row| %>
+        <div class="row">
+        <% row.each do |image| %>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <%= link_to(image) do %>
+                        <%= image_tag(image.src, alt: image.title, title: image.title) %>
+                    <% end %>
+                    <div class="caption">
+                        <h3><%= image.title %></h3>
+                        <p>
+                            <%= link_to 'View', image, class: "btn btn-primary" %>
+                            <%= link_to 'Edit', edit_image_path(image), class: "btn btn-primary" %>
+                            <%= link_to 'Destroy', image, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+                        </p>
+                    </div>
                 </div>
             </div>
+        <% end %>
         </div>
     <% end %>
-    </div>
+<% else %>
+    <h3>Please add some images first</h3>
 <% end %>
 
 <%= link_to 'New Image', new_image_path, class: "btn btn-primary" %>
