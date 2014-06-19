@@ -13,6 +13,7 @@ To install it:
 - `git clone git@github.com:Nenillo/galleryfx.git`
 - `cd galleryfx`
 - `bundle install`
+- `rake db:migrate`
 - `rails s`
  
 And you are ready to browse it, usually pointing the browser to http://localhost:3000
